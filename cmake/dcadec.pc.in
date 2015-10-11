@@ -1,9 +1,0 @@
-prefix=@CMAKE_INSTALL_PREFIX@
-libdir=${prefix}/lib
-includedir=${prefix}/include
-
-Name: dcadec
-Description: a free DTS Coherent Acoustics decoder with support for HD extensions
-Version: %VERSION%
-Libs: -L${libdir} -ldcadec
-Cflags: -I${includedir}

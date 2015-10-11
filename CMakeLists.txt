@@ -25,35 +25,35 @@ endif()
 
 # Define source lists
 set(SRC_LIB
-    "../libdcadec/bitstream.c"
-    "../libdcadec/core_decoder.c"
-    "../libdcadec/dca_context.c"
-    "../libdcadec/dmix_tables.c"
-    "../libdcadec/exss_parser.c"
-    "../libdcadec/idct_fixed.c"
-    "../libdcadec/idct_float.c"
-    "../libdcadec/interpolator.c"
-    "../libdcadec/interpolator_fixed.c"
-    "../libdcadec/interpolator_float.c"
-    "../libdcadec/ta.c"
-    "../libdcadec/xll_decoder.c"
+    "libdcadec/bitstream.c"
+    "libdcadec/core_decoder.c"
+    "libdcadec/dca_context.c"
+    "libdcadec/dmix_tables.c"
+    "libdcadec/exss_parser.c"
+    "libdcadec/idct_fixed.c"
+    "libdcadec/idct_float.c"
+    "libdcadec/interpolator.c"
+    "libdcadec/interpolator_fixed.c"
+    "libdcadec/interpolator_float.c"
+    "libdcadec/ta.c"
+    "libdcadec/xll_decoder.c"
     )
 
 set(INC_LIB
-    "../libdcadec/dca_context.h"
+    "libdcadec/dca_context.h"
     )
 
 if(NOT CONFIG_SMALL)
     set(SRC_LIB ${SRC_LIB}
-        "../libdcadec/dca_frame.c"
-        "../libdcadec/dca_stream.c"
-        "../libdcadec/dca_waveout.c"
+        "libdcadec/dca_frame.c"
+        "libdcadec/dca_stream.c"
+        "libdcadec/dca_waveout.c"
         )
 
     set(INC_LIB ${INC_LIB}
-        "../libdcadec/dca_frame.h"
-        "../libdcadec/dca_stream.h"
-        "../libdcadec/dca_waveout.h"
+        "libdcadec/dca_frame.h"
+        "libdcadec/dca_stream.h"
+        "libdcadec/dca_waveout.h"
     )
 endif()
 
@@ -125,6 +125,7 @@ if(BUILD_SHARED_LIB)
                 LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}"
                 ARCHIVE DESTINATION "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}")
     else()
+        ADD_DEFINITIONS("-fPIC -fvisibility=hidden")
         INSTALL(TARGETS dcadec-library-shared
                 LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}")
     endif()
